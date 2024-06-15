@@ -12,7 +12,7 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "Billing",
-      href: "/billing",
+      href: "/dashboard/billing",
     },
     // {
     //   title: "Documentation",
