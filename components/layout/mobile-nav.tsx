@@ -18,12 +18,13 @@ import { ModeToggle } from "./mode-toggle";
 
 export function NavMobile() {
   const [open, setOpen] = useState(false);
+  const { data: session, status } = useSession();
   const selectedLayout = useSelectedLayoutSegment();
   const dashBoard = selectedLayout === "dashboard";
   const documentation = selectedLayout === "docs";
   const links = documentation
     ? docsConfig.mainNav
-    : dashBoard
+    : session //dashBoard
       ? dashboardConfig.mainNav
       : marketingConfig.mainNav;
 
@@ -36,7 +37,7 @@ export function NavMobile() {
     }
   }, [open]);
 
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   return (
     <>
