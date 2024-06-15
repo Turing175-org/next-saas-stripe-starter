@@ -25,7 +25,7 @@ export default async function DashboardPage() {
 
   return (
     <>
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <Image
           src="/examples/dashboard-light.png"
           width={1280}
@@ -40,7 +40,7 @@ export default async function DashboardPage() {
           alt="Dashboard"
           className="hidden dark:block"
         />
-      </div>
+      </div> */}
       <div className="hidden flex-col md:flex">
         {/* <div className="border-b">
           <div className="flex h-16 items-center px-4">
