@@ -32,7 +32,6 @@ export function NavBar({ scroll = false }: NavBarProps) {
 
   const selectedLayout = useSelectedLayoutSegment();
   const dashBoard = selectedLayout === "dashboard";
-  console.log("selectedLayout:", selectedLayout);
   const documentation = selectedLayout === "docs";
   const links = documentation
     ? docsConfig.mainNav

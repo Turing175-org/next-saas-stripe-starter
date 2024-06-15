@@ -5,6 +5,7 @@
  */
 export const publicRoutes = [
   "/",
+  "/d",
   "/blog",
   "/docs",
   "/guides",
