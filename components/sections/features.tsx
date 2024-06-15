@@ -13,7 +13,7 @@ export default function Features() {
         <MaxWidthWrapper>
           <HeaderSection
             label="Features"
-            title="Discover all features."
+            title="Discover all features"
             subtitle="Discover the benefits of our copy trading platform."
           />
 

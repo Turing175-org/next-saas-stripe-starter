@@ -26,24 +26,24 @@ export const infos: InfoLdg[] = [
     ],
   },
   {
-    title: "Seamless Integration",
+    title: "Trader Data Analysis",
     description:
-      "Integrate our open-source SaaS seamlessly into your existing workflows. Effortlessly connect with your favorite tools and services for a streamlined experience.",
+      "Gain deep insights into trader performance, risk, and portfolio diversification to make informed trading decisions.",
     image: "/images/work-from-home.jpg",
     list: [
       {
-        title: "Flexible",
+        title: "Performance Tracking",
         description:
           "Customize your integrations to fit your unique requirements.",
         icon: "laptop",
       },
       {
-        title: "Efficient",
+        title: "Risk Analysis",
         description: "Streamline your processes and reducing manual effort.",
         icon: "search",
       },
       {
-        title: "Reliable",
+        title: "Portfolio Diversification",
         description:
           "Rely on our robust infrastructure and comprehensive documentation.",
         icon: "settings",
