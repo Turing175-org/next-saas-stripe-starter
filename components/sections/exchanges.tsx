@@ -1,5 +1,6 @@
 import { HeaderSection } from "@/components/shared/header-section";
 import Link from "next/link";
+import MaxWidthWrapper from "../shared/max-width-wrapper";
 
 const exchangnos = [
     {
@@ -192,26 +193,28 @@ export default function Exchanges() {
   return (
     <section>
       {/* <div className="container flex max-w-6xl flex-col gap-10 py-14 sm:gap-y-16"> */}
-      <div>
-        <HeaderSection
-          label=""
-          title="Manage all crypto exchange accounts from one place"
-          subtitle="Trade all accounts simultaneously (applies to any single exchange per trade)."
-        />
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-10 gap-y-8 lg:gap-16">
-          {exchangnos.map((feature) => (
-            <Link
-              target="_blank"
-              key={feature.title}
-              href={feature.href}
-              aria-label={feature.title}
-              className="duration-250 flex flex-col items-center transition hover:text-foreground"
-            >
-              {feature.icon}
-            </Link>
-          ))}
+      <MaxWidthWrapper>
+        <div>
+            <HeaderSection
+            label=""
+            title="Manage all crypto exchange accounts from one place"
+            subtitle="Trade all accounts simultaneously (applies to any single exchange per trade)."
+            />
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-10 gap-y-8 lg:gap-16">
+            {exchangnos.map((feature) => (
+                <Link
+                target="_blank"
+                key={feature.title}
+                href={feature.href}
+                aria-label={feature.title}
+                className="duration-250 flex flex-col items-center transition hover:text-foreground"
+                >
+                {feature.icon}
+                </Link>
+            ))}
+            </div>
         </div>
-      </div>
+      </MaxWidthWrapper>
     </section>
   );
 }
