@@ -17,6 +17,11 @@ import { Icons } from "@/components/shared/icons";
 import { ModeToggle } from "./mode-toggle";
 
 export function NavMobile() {
+  const { data: session } = useSession();
+  if (session) {
+    return null;
+  }
+  
   const [open, setOpen] = useState(false);
   const selectedLayout = useSelectedLayoutSegment();
   const dashBoard = selectedLayout === "dashboard";
@@ -36,7 +41,6 @@ export function NavMobile() {
     }
   }, [open]);
 
-  const { data: session } = useSession();
 
   return (
     <>
