@@ -18,12 +18,7 @@ import { ModeToggle } from "./mode-toggle";
 
 export function NavMobile() {
   const [open, setOpen] = useState(false);
-
   const { data: session } = useSession();
-  if (session) {
-    return null;
-  }
-  
   const selectedLayout = useSelectedLayoutSegment();
   const dashBoard = selectedLayout === "dashboard";
   const documentation = selectedLayout === "docs";
@@ -42,7 +37,10 @@ export function NavMobile() {
     }
   }, [open]);
 
-
+  if (session) {
+    return null;
+  }
+  
   return (
     <>
       <button
