@@ -39,7 +39,7 @@ export default async function HeroLanding() {
           <span className="mr-3">🎉</span> Introducing on{" "}
           <Icons.twitter className="ml-2 size-3.5" />
         </Link> */}
-        <h1 className="animate-fade-up opacity-0 text-balance font-urban text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-[66px]"
+        <h1 className="animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-[66px]"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Invest Alongside the{" "}
