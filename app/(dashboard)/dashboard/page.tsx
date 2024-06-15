@@ -24,23 +24,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <>
-      {/* <div className="md:hidden">
-        <Image
-          src="/examples/dashboard-light.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/dashboard-dark.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="hidden dark:block"
-        />
-      </div> */}
+    <DashboardShell>
       {/* <div className="hidden flex-col md:flex"> */}
       <div className="flex-col md:flex">
         {/* <div className="border-b">
@@ -213,6 +197,6 @@ export default async function DashboardPage() {
           </Tabs> */}
         </div>
       </div>
-    </>
+    </DashboardShell>
   );
 }
