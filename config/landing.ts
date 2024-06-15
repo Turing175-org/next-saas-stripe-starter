@@ -54,40 +54,40 @@ export const infos: InfoLdg[] = [
 
 export const features = [
   {
-    title: "Feature 1",
+    title: "Consistent Profits",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Leverage the expertise of successful traders and enjoy consistent returns on your investments.",
     link: "/",
   },
   {
-    title: "Feature 2",
+    title: "Save Time",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Automate your trading process and free up your time to focus on other aspects of your life.",
     link: "/",
   },
   {
-    title: "Feature 3",
+    title: "Secure Trading",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Our platform prioritizes security, ensuring your funds and personal information are protected.",
     link: "/",
   },
-  {
-    title: "Feature 4",
-    description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
-    link: "/",
-  },
-  {
-    title: "Feature 5",
-    description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
-  },
-  {
-    title: "Feature 6",
-    description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
-    link: "/",
-  },
+  // {
+  //   title: "Feature 4",
+  //   description:
+  //     "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+  //   link: "/",
+  // },
+  // {
+  //   title: "Feature 5",
+  //   description:
+  //     "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+  // },
+  // {
+  //   title: "Feature 6",
+  //   description:
+  //     "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+  //   link: "/",
+  // },
 ];
 
 export const testimonials = [
