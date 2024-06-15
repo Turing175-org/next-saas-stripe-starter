@@ -17,12 +17,13 @@ import { Icons } from "@/components/shared/icons";
 import { ModeToggle } from "./mode-toggle";
 
 export function NavMobile() {
+  const [open, setOpen] = useState(false);
+
   const { data: session } = useSession();
   if (session) {
     return null;
   }
   
-  const [open, setOpen] = useState(false);
   const selectedLayout = useSelectedLayoutSegment();
   const dashBoard = selectedLayout === "dashboard";
   const documentation = selectedLayout === "docs";
