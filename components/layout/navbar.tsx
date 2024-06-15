@@ -32,6 +32,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
 
   const selectedLayout = useSelectedLayoutSegment();
   const dashBoard = selectedLayout === "dashboard";
+  console.log("selectedLayout:", selectedLayout);
   const documentation = selectedLayout === "docs";
   const links = documentation
     ? docsConfig.mainNav
@@ -104,7 +105,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
 
           {session ? (
             <>
-              {dashBoard ? (
+              {/* {dashBoard ? (
                 <UserAccountNav user={session.user} />
               ) : (
                 <Link href="/dashboard" className="hidden md:block">
@@ -117,7 +118,10 @@ export function NavBar({ scroll = false }: NavBarProps) {
                     <span>Dashboard</span>
                   </Button>
                 </Link>
-              )}
+              )} */}
+              { 
+                <UserAccountNav user={session.user} />
+              }
             </>
           ) : status === "unauthenticated" ? (
             <Button
