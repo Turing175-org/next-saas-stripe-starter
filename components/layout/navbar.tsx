@@ -36,7 +36,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
   const documentation = selectedLayout === "docs";
   const links = documentation
     ? docsConfig.mainNav
-    : dashBoard
+    : session//dashBoard
       ? dashboardConfig.mainNav
       : marketingConfig.mainNav;
 
