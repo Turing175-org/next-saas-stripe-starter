@@ -21,7 +21,7 @@ export const footerLinks: SidebarNavItem[] = [
     title: "Company",
     items: [
       { title: "About", href: "#" },
-      { title: "Enterprise", href: "#" },
+      { title: "Disclaimer", href: "#" },
       { title: "Terms", href: "/terms" },
       { title: "Privacy", href: "/privacy" },
     ],
@@ -29,10 +29,10 @@ export const footerLinks: SidebarNavItem[] = [
   {
     title: "Product",
     items: [
-      { title: "Security", href: "#" },
-      { title: "Customization", href: "#" },
+      { title: "Auto Trading", href: "#" },
+      { title: "Trader Analysis", href: "#" },
       { title: "Customers", href: "#" },
-      { title: "Changelog", href: "#" },
+      // { title: "Changelog", href: "#" },
     ],
   },
   {
@@ -41,7 +41,7 @@ export const footerLinks: SidebarNavItem[] = [
       { title: "Introduction", href: "#" },
       { title: "Installation", href: "#" },
       { title: "Components", href: "#" },
-      { title: "Code Blocks", href: "#" },
+      // { title: "Code Blocks", href: "#" },
     ],
   },
 ];
