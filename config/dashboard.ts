@@ -12,7 +12,7 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "Billing",
-      href: "/dashboard/billing",
+      href: "/billing",
     },
     // {
     //   title: "Documentation",
@@ -32,12 +32,12 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: "Billing",
-      href: "/dashboard/billing",
+      href: "/billing",
       icon: "billing",
     },
     {
       title: "Settings",
-      href: "/dashboard/settings",
+      href: "/settings",
       icon: "settings",
     },
   ],

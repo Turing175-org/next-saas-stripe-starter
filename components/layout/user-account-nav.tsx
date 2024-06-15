@@ -47,7 +47,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
-            href="/dashboard/billing"
+            href="/billing"
             className="flex items-center space-x-2.5"
           >
             <CreditCard className="size-4" />
@@ -56,7 +56,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
-            href="/dashboard/settings"
+            href="/settings"
             className="flex items-center space-x-2.5"
           >
             <Settings className="size-4" />
