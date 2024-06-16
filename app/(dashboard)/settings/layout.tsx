@@ -17,7 +17,7 @@ interface SettingsLayoutProps {
 const sidebarNavItems = [
   {
     title: "Profile",
-    href: "/s",
+    href: "/settings",
   },
   // {
   //   title: "Account",
@@ -25,7 +25,7 @@ const sidebarNavItems = [
   // },
   {
     title: "Appearance",
-    href: "/s/appearance",
+    href: "/settings/appearance",
   },
   // {
   //   title: "Notifications",
@@ -33,7 +33,7 @@ const sidebarNavItems = [
   // },
   {
     title: "Display",
-    href: "/s/display",
+    href: "/settings/display",
   },
 ]
 

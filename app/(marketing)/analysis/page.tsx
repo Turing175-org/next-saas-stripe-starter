@@ -7,6 +7,7 @@ import { toast } from "sonner"
 import { DataTable } from "@/app/_components/data-table"
 import { okxOrderColumns, orderColumns } from "@/app/_components/columns"
 import { Input } from "@/components/ui/input-table"
+import { Separator } from "@/components/ui/separator"
 
 export type BitGetHistoryOrder = {
   trackingNo: string;
@@ -169,7 +170,13 @@ export default function AnalysisPage() {
             <DataTable data={okxOrder} columns={okxOrderColumns} />
           </TabsContent>
         </Tabs>
+
+        <Separator/>
+
+        
+
       </div>
+
     </>
   )
 }

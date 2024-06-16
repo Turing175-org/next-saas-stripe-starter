@@ -15,6 +15,10 @@ export const dashboardConfig: DashboardConfig = {
       href: "/analysis",
     },
     {
+      title: "Exchanges",
+      href: "/exchanges",
+    },
+    {
       title: "Billing",
       href: "/billing",
     },
