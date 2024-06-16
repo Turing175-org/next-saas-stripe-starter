@@ -127,7 +127,7 @@ export default function AnalysisPage() {
 
   return (
     <>
-      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <Tabs defaultValue="Bitget" className="space-y-4">
           <TabsList>
             <TabsTrigger value="Bitget">Bitget</TabsTrigger>
