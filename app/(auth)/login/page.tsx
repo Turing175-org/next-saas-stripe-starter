@@ -6,15 +6,29 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/shared/icons"
 import { UserAuthForm } from "@/components/forms/user-auth-form"
 import { Suspense } from "react"
+import { toast } from "sonner"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 export const metadata: Metadata = {
   title: "Login",
   description: "Login to your account",
 }
 
+// toast.success("Please use Google sign in");
+
 export default function LoginPage() {
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
+      <div className="mb-4">
+        <Alert className="!pl-14">
+          <Icons.warning />
+          <AlertTitle>Please use Google sign in.</AlertTitle>
+          <AlertDescription>
+            Currently not support email login.{" "}
+          </AlertDescription>
+        </Alert>
+      </div>
+
       <Link
         href="/"
         className={cn(
