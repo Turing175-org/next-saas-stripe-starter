@@ -12,7 +12,7 @@ import { Overview } from "@/app/_components/overview";
 import { RecentSales } from "@/app/_components/recent-sales";
 
 export const metadata = constructMetadata({
-  title: "Settings – SaaS Starter",
+  title: "Settings – Moon Crypto",
   description: "Overview of your account and activities.",
 });
 

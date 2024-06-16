@@ -1,12 +1,12 @@
 "use client"
 
-// import { DataTable } from "../_components/data-table"
-// import { okxOrderColumns, orderColumns } from "../_components/columns"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
+import { DataTable } from "@/app/_components/data-table"
+import { okxOrderColumns, orderColumns } from "@/app/_components/columns"
+import { Input } from "@/components/ui/input-table"
 
 export type BitGetHistoryOrder = {
   trackingNo: string;
@@ -143,7 +143,7 @@ export default function AnalysisPage() {
                 </div>
               </form>
             </div>
-            {/* <DataTable data={order} columns={orderColumns} /> */}
+            <DataTable data={order} columns={orderColumns} />
           </TabsContent>
           <TabsContent value="binance" className="space-y-4">
             <div >
@@ -166,7 +166,7 @@ export default function AnalysisPage() {
                 </div>
               </form>
             </div>
-            {/* <DataTable data={okxOrder} columns={okxOrderColumns} /> */}
+            <DataTable data={okxOrder} columns={okxOrderColumns} />
           </TabsContent>
         </Tabs>
       </div>

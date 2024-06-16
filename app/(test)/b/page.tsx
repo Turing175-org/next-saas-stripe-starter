@@ -17,11 +17,11 @@ export const metadata = constructMetadata({
 export default async function BillingPage() {
   const user = await getCurrentUser();
 
-  if (!user) {
-    redirect("/login");
-  }
+  // if (!user) {
+  //   redirect("/login");
+  // }
 
-  const userSubscriptionPlan = await getUserSubscriptionPlan(user.id);
+  // const userSubscriptionPlan = await getUserSubscriptionPlan(user.id);
 
   return (
     <DashboardShell>
@@ -47,7 +47,7 @@ export default async function BillingPage() {
             .
           </AlertDescription>
         </Alert>
-        <BillingInfo userSubscriptionPlan={userSubscriptionPlan} />
+        {/* <BillingInfo userSubscriptionPlan={userSubscriptionPlan} /> */}
       </div>
     </DashboardShell>
   );

@@ -16,7 +16,7 @@ import { RecentSales } from "../../_components/recent-sales";
 
 
 export const metadata = constructMetadata({
-  title: "Settings – SaaS Starter",
+  title: "Settings – Moon Cryptor",
   description: "Overview of your account and activities.",
 });
 

@@ -7,7 +7,7 @@ import { DashboardShell } from "@/components/dashboard/shell";
 import { UserNameForm } from "@/components/forms/user-name-form";
 
 export const metadata = constructMetadata({
-  title: "Settings – SaaS Starter",
+  title: "Settings – Moon Crypto",
   description: "Configure your account and website settings.",
 });
 

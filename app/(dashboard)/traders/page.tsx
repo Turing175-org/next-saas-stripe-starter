@@ -1,8 +1,15 @@
+import { DashboardHeader } from "@/components/dashboard/header";
+import { DashboardShell } from "@/components/dashboard/shell";
 import { Separator } from "@/components/ui/separator";
 
 export default async function page() {
+
   return (
-    // <Shell className="gap-2">
+    <DashboardShell>
+      <DashboardHeader
+        heading="Traders"
+        text=""
+      />
       <div className='flex h-full w-full flex-col items-center justify-center'>
         <h1 className='text-center text-4xl font-bold'>Traders Under Construction</h1>
         <p className='text-center text-base text-muted-foreground'>
@@ -13,6 +20,6 @@ export default async function page() {
         <p>Server-side sorting, filtering, and pagination.</p> 
         <p> Means users can share filtered table by just sharing URL.</p> */}
       </div>
-    // </Shell>
+    </DashboardShell>
   );
 }
