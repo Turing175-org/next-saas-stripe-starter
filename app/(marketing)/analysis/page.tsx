@@ -57,13 +57,23 @@ async function getBitgetHistoryOrder(traderId: string) {
     }
     const {data, pageCount} = await response.json() as { data: BitGetHistoryOrder[], pageCount: number }
     console.log("getBitgetHistoryOrder:", data.length);
-  
+    // toast.error("Fake An unknown error occurred, check console for more message", {
+    //   description: "Your name was not updated. Please try again.",
+    //   position: "top-center",
+    //   duration: 5000,
+    //   // cancel: {
+    //   //   label: 'Cancel',
+    //   //   onClick: () => console.log('Cancel!'),
+    //   // },
+    // });
     return data;
   } catch (error) {
     if (error instanceof Error) {
       toast.error(error.message);
     } else {
-      toast.error("An unknown error occurred, check console for more message");
+      toast.error("An unknown error occurred, check console for more message", {
+        position: "top-center",
+      });
     }
     console.error("Failed to fetch order data:", error);
     return [];
@@ -77,12 +87,15 @@ async function getOkxHistoryOrder(traderId: string) {
     }
     const {data, pageCount} = await response.json() as { data: OkxHistoryOrder[], pageCount: number }
     console.log("getOkxHistoryOrder:", data.length);
+
     return data;
   } catch (error) {
     if (error instanceof Error) {
       toast.error(error.message);
     } else {
-      toast.error("An unknown error occurred, check console for more message");
+      toast.error("An unknown error occurred, check console for more message", {
+        position: "top-center",
+      });
     }
     console.error("Failed to fetch order data:", error);
     return [];
