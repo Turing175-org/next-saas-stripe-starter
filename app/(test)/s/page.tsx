@@ -4,6 +4,7 @@ import { getCurrentUser } from "@/lib/session";
 import { constructMetadata } from "@/lib/utils";
 import { UserNameForm } from "@/components/forms/user-name-form";
 import { Separator } from "@/components/ui/separator";
+import { SidebarNav } from "@/app/_components/sidebar-nav";
 import { ProfileForm } from "./profile-form";
 
 export const metadata = constructMetadata({
@@ -14,21 +15,17 @@ export const metadata = constructMetadata({
 export default async function SettingsPage() {
   const user = await getCurrentUser();
 
-  if (!user) {
-    redirect("/login");
-  }
+  // if (!user) {
+  //   redirect("/login");
+  // }
 
   return (
-    // <DashboardShell>
-    //   <DashboardHeader
-    //     heading="Settings"
-    //     text="Manage account and website settings."
-    //   />
-    //   <div className="grid gap-10">
-    //     <UserNameForm user={{ id: user.id, name: user.name || "" }} />
-    //   </div>
-    // </DashboardShell>
     <>
+      {/* <div className="grid gap-10">
+        <UserNameForm user={{ id: user.id, name: user.name || "" }} />
+        <UserNameForm user={{ id: '123', name: 'user.name' || "" }} />
+      </div> */}
+      
       <div className="space-y-6">
         <div>
           <h3 className="text-lg font-medium">Profile</h3>
@@ -39,6 +36,7 @@ export default async function SettingsPage() {
         <Separator />
         <ProfileForm user={user} />
       </div>
+
     </>
   );
 }

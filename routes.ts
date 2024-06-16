@@ -7,6 +7,7 @@ export const publicRoutes = [
   "/",
   "/d", //TODO: remove
   "/b", //TODO: remove
+  "/s", //TODO: remove
   // "/traders", //TODO: remove
   "/blog",
   "/docs",
