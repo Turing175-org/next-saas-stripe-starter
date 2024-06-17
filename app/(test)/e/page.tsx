@@ -28,26 +28,27 @@ const mockData: ExchangeApiInfo[] = [
   }
 ];
 
-async function fetchExchangeAPIs(userId) {
+async function fetchExchangeAPIs(userId: string): Promise<{ data: ExchangeApiInfo[]; status: string }> {
   try {
-    const data = await getExchangeAPI(userId);
-    console.log('Exchange APIs:', data);
-    return data;
+    const exchangeAPIs = await getExchangeAPI(userId);
+    console.log('Exchange APIs:', exchangeAPIs);
+    return {data: exchangeAPIs, status: 'success'};
   } catch (error) {
     console.error(error);
+    return { data: [], status: 'error' }
   }
 }
 
 export default async function ExchangePage() {
   // const user = await getCurrentUser();
   const user = 1;
-  
+
   if (user) {
     // const data = await fetchExchangeAPIs(user.id);
     const data = await fetchExchangeAPIs("clxiz8v0z00004iggqdpyuyv3");
 
   }
-
+  const {data, status} = await fetchExchangeAPIs("clxiz8v0z00004iggqdpyuyv3");
 
   return (
     <DashboardShell>
@@ -62,6 +63,7 @@ export default async function ExchangePage() {
         <CreateExchangeDialog userid='userid' />
 
         <DataTable data={mockData} columns={exchangeApiInfoColumns} />
+        {/* <DataTable data={data} columns={exchangeApiInfoColumns} /> */}
 
       </div>
     </DashboardShell>

@@ -4,6 +4,7 @@ import { unstable_noStore as noStore, revalidatePath } from "next/cache"
 import { CreateExchangeApiSchema } from "@/lib/validations/exchange"
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
+import { ExchangeApiInfo } from "@/app/(dashboard)/exchanges/page";
 
 
 export async function createExchangeAPI(userId: string, input: CreateExchangeApiSchema) {
@@ -41,14 +42,14 @@ export async function createExchangeAPI(userId: string, input: CreateExchangeApi
   }
 }
 
-export async function getExchangeAPI(userId: string) {
+export async function getExchangeAPI(userId: string): Promise<ExchangeApiInfo[]> {
   // noStore()
   try {
-    const session = await auth()
+    // const session = await auth()
     
-    if (!session?.user || session?.user.id !== userId) {
-      throw new Error("Unauthorized");
-    }
+    // if (!session?.user || session?.user.id !== userId) {
+    //   throw new Error("Unauthorized");
+    // }
 
     // Retrieve  
     const exchangeAPIs = await prisma.exchangeAccount.findMany({
@@ -57,15 +58,9 @@ export async function getExchangeAPI(userId: string) {
       },
     })
 
-    return {
-      data: exchangeAPIs,
-      status: "success",
-    }
+    return exchangeAPIs
   } catch (err) {
     console.log(err)
-    return {
-      data: null,
-      error: (err),
-    }
+    return []
   }
 }
