@@ -18,11 +18,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { deleteExchangeAPI } from "@/actions/exchange"
+import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
 
 
 interface DeleteExchangeApiDialogProps
   extends React.ComponentPropsWithoutRef<typeof Dialog> {
-  tasks: Row<Task>["original"][]
+  tasks: Row<ExchangeApiInfo>["original"][]
   showTrigger?: boolean
   onSuccess?: () => void
 }
