@@ -51,7 +51,6 @@ export default async function BillingPage() {
           </AlertDescription>
         </Alert> */}
 
-
         <Card x-chunk="dashboard-05-chunk-3">
           <CardHeader className="px-7">
             <CardTitle>Payment History</CardTitle>
