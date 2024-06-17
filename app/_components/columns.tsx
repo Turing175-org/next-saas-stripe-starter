@@ -13,6 +13,8 @@ import { DropdownMenu,
 import { BitGetHistoryOrder, OkxHistoryOrder } from "../(marketing)/analysis/page"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
+import { useState } from "react"
+import { DeleteExchangeApiDialog } from "./delete-exchange-dialog"
 
 // export const orderColumns: ColumnDef<Payment>[] = [
 export const orderColumns: ColumnDef<BitGetHistoryOrder>[] = [
@@ -369,9 +371,10 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
   },
   {
     accessorKey: "apiKey",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="ApiKey" />
-    ),
+    header: "ApiKey",
+    // header: ({ column }) => (
+    //   <DataTableColumnHeader column={column} title="ApiKey" />
+    // ),
     cell: ({ row }) => (
       <div>{row.getValue("apiKey")}</div>
     ),
@@ -402,8 +405,17 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       const payment = row.original
+      const [showDeleteTaskDialog, setShowDeleteTaskDialog] = useState(false)
 
       return (
+        <>
+        <DeleteExchangeApiDialog
+          open={showDeleteTaskDialog}
+          onOpenChange={setShowDeleteTaskDialog}
+          tasks={[row.original]}
+          showTrigger={false}
+          onSuccess={() => row.toggleSelected(false)}
+        />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
@@ -412,17 +424,24 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
+            {/* <DropdownMenuItem onSelect={() => setShowUpdateTaskSheet(true)}> */}
+            <DropdownMenuItem>
+              Edit
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.apiKey)}
             >
-              Copy apiKey
+              Copy ApiKey
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => setShowDeleteTaskDialog(true)}>
+              Delete
+            </DropdownMenuItem>
             {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
+        </>
       )
     },
   },

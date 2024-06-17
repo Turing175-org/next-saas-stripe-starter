@@ -45,11 +45,11 @@ export async function createExchangeAPI(userId: string, input: CreateExchangeApi
 export async function getExchangeAPI(userId: string): Promise<ExchangeApiInfo[]> {
   // noStore()
   try {
-    // const session = await auth()
+    const session = await auth()
     
-    // if (!session?.user || session?.user.id !== userId) {
-    //   throw new Error("Unauthorized");
-    // }
+    if (!session?.user || session?.user.id !== userId) {
+      throw new Error("Unauthorized");
+    }
 
     // Retrieve  
     const exchangeAPIs = await prisma.exchangeAccount.findMany({
@@ -62,5 +62,32 @@ export async function getExchangeAPI(userId: string): Promise<ExchangeApiInfo[]>
   } catch (err) {
     console.log(err)
     return []
+  }
+}
+
+export async function deleteExchangeAPI(input: { ids: string[] }) {
+  try {
+
+    // Delete  
+    const result = await prisma.exchangeAccount.deleteMany({
+      where: {
+        id: {
+          in: input.ids,
+        }
+      },
+    })
+    console.log(result)
+    revalidatePath("/")
+
+    return {
+      data: null,
+      error: null,
+    }
+  } catch (err) {
+    console.log(err)
+    return {
+      data: null,
+      error: (err),
+    }
   }
 }
