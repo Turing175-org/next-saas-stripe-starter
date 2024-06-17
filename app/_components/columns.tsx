@@ -403,12 +403,19 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
   {
     id: "actions",
     enableHiding: false,
-    cell: ({ row }) => {
+    // cell: ({ row }) => {
+    cell: function Cell({ row }) {
       const payment = row.original
+      const [showUpdateTaskSheet, setShowUpdateTaskSheet] = useState(false)
       const [showDeleteTaskDialog, setShowDeleteTaskDialog] = useState(false)
 
       return (
         <>
+        {/* <UpdateExchangeApiSheet
+          open={showUpdateTaskSheet}
+          onOpenChange={setShowUpdateTaskSheet}
+          task={row.original}
+        /> */}
         <DeleteExchangeApiDialog
           open={showDeleteTaskDialog}
           onOpenChange={setShowDeleteTaskDialog}
@@ -425,8 +432,7 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
-            {/* <DropdownMenuItem onSelect={() => setShowUpdateTaskSheet(true)}> */}
-            <DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => setShowUpdateTaskSheet(true)}>
               Edit
             </DropdownMenuItem>
             <DropdownMenuItem
@@ -438,7 +444,6 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
             <DropdownMenuItem onSelect={() => setShowDeleteTaskDialog(true)}>
               Delete
             </DropdownMenuItem>
-            {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
         </>
