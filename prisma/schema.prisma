@@ -69,10 +69,10 @@ model ExchangeAccount {
   id                String   @id @default(cuid())
   userId            String
   exchangeName      String
+  apiKey            String
+  secretKey         String
+  passphrase        String?
   description       String?
-  apiKey            String   @db.Text
-  secretKey         String   @db.Text
-  passphrase        String?  @db.Text
   createdAt         DateTime @default(now()) @map(name: "created_at")
   updatedAt         DateTime @default(now()) @map(name: "updated_at")
 

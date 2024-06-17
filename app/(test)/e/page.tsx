@@ -1,60 +1,53 @@
+import { getExchangeAPI } from "@/actions/exchange";
+import { ExchangeApiInfo } from "@/app/(dashboard)/exchanges/page";
+import { exchangeApiInfoColumns } from "@/app/_components/columns";
 import { CreateExchangeDialog } from "@/app/_components/create-exchange-dialog";
+import { DataTable } from "@/app/_components/data-table";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { DashboardShell } from "@/components/dashboard/shell";
 import { getCurrentUser } from "@/lib/session";
-import { useState } from "react";
 
-interface ApiAccount {
-  id: number
-  exchange: string
-  apiKey: string
-  apiSecret: string
+const mockData: ExchangeApiInfo[] = [
+  {
+    id: '1',
+    userId: '1',
+    exchangeName: 'Binance',
+    apiKey: 'api-key-1',
+    secretKey: 'secret-key-1',
+    passphrase: 'passphrase-1',
+    description: 'Binance account',
+  },
+  {
+    id: '2',
+    userId: '1',
+    exchangeName: 'Coinbase',
+    apiKey: 'api-key-2',
+    secretKey: 'secret-key-2',
+    passphrase: 'passphrase-2',
+    description: 'Coinbase account',
+  }
+];
+
+async function fetchExchangeAPIs(userId) {
+  try {
+    const data = await getExchangeAPI(userId);
+    console.log('Exchange APIs:', data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 }
-  
+
 export default async function ExchangePage() {
-  const user = await getCurrentUser();
-
-  // if (!user) {
-  //   redirect("/login");
-  // }
+  // const user = await getCurrentUser();
+  const user = 1;
   
-  // const [apiAccounts, setApiAccounts] = useState<ApiAccount[]>([])
-  // const [newApi, setNewApi] = useState<ApiAccount>({
-  //   id: Date.now(),
-  //   exchange: '',
-  //   apiKey: '',
-  //   apiSecret: '',
-  // })
-  // const [showForm, setShowForm] = useState(false)
+  if (user) {
+    // const data = await fetchExchangeAPIs(user.id);
+    const data = await fetchExchangeAPIs("clxiz8v0z00004iggqdpyuyv3");
 
-  // const handleAddApi = () => {
-  //   setApiAccounts([...apiAccounts, newApi])
-  //   setNewApi({ id: Date.now(), exchange: '', apiKey: '', apiSecret: '' })
-  //   setShowForm(false)
-  // }
+  }
 
-  const columns = [
-    {
-      Header: 'Exchange',
-      accessor: 'exchange',
-    },
-    {
-      Header: 'API Key',
-      accessor: 'apiKey',
-    },
-    {
-      Header: 'API Secret',
-      accessor: 'apiSecret',
-    },
-  ]
-
-  // const {
-  //   getTableProps,
-  //   getTableBodyProps,
-  //   headerGroups,
-  //   rows,
-  //   prepareRow,
-  // } = useTable({ columns, data: apiAccounts })
 
   return (
     <DashboardShell>
@@ -68,6 +61,7 @@ export default async function ExchangePage() {
         {/* <CreateExchangeDialog userid={user?.id} /> */}
         <CreateExchangeDialog userid='userid' />
 
+        <DataTable data={mockData} columns={exchangeApiInfoColumns} />
 
       </div>
     </DashboardShell>

@@ -185,7 +185,6 @@ export default function AnalysisPage() {
         </Tabs>
 
         <Separator/>
-
         
 
       </div>

@@ -4,6 +4,18 @@ import { DashboardShell } from "@/components/dashboard/shell";
 import { getCurrentUser } from "@/lib/session";
 import { redirect } from "next/navigation";
 
+export type ExchangeApiInfo = {
+  id: string;
+  userId: string
+  exchangeName: string;
+  apiKey: string;
+  secretKey: string;
+  passphrase: string;
+  description: string;
+  // createdAt: string;
+  // updatedAt: string;
+};
+
 export default async function page() {
   const user = await getCurrentUser();
   if (!user) {
