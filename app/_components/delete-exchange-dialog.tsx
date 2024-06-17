@@ -74,7 +74,7 @@ export function DeleteExchangeApiDialog({
                 }
 
                 props.onOpenChange?.(false)
-                toast.success("Tasks deleted")
+                toast.success("API deleted")
                 onSuccess?.()
               })
             }}

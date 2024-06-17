@@ -371,7 +371,7 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
   },
   {
     accessorKey: "apiKey",
-    header: "ApiKey",
+    header: "API",
     // header: ({ column }) => (
     //   <DataTableColumnHeader column={column} title="ApiKey" />
     // ),
@@ -379,20 +379,20 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
       <div>{row.getValue("apiKey")}</div>
     ),
   },
-  {
-    accessorKey: "secretKey",
-    header: "SecretKey",
-    cell: ({ row }) => (
-      <div>{row.getValue("secretKey")}</div>
-    ),
-  },
-  {
-    accessorKey: "passphrase",
-    header: "Passphrase",
-    cell: ({ row }) => (
-      <div>{row.getValue("passphrase")}</div>
-    ),
-  },
+  // {
+  //   accessorKey: "secretKey",
+  //   header: "SecretKey",
+  //   cell: ({ row }) => (
+  //     <div>{row.getValue("secretKey")}</div>
+  //   ),
+  // },
+  // {
+  //   accessorKey: "passphrase",
+  //   header: "Passphrase",
+  //   cell: ({ row }) => (
+  //     <div>{row.getValue("passphrase")}</div>
+  //   ),
+  // },
   {
     accessorKey: "description",
     header: "Description",
