@@ -25,6 +25,15 @@ const mockData: ExchangeApiInfo[] = [
     secretKey: 'secret-key-2',
     passphrase: 'passphrase-2',
     description: 'Coinbase account',
+  },
+  {
+    id: '3',
+    userId: '1',
+    exchangeName: 'OKX',
+    apiKey: 'api-key-3',
+    secretKey: 'secret-key-3',
+    passphrase: null,
+    description: 'OKX account',
   }
 ];
 

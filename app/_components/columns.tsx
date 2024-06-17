@@ -15,6 +15,7 @@ import { DataTableColumnHeader } from "./data-table-column-header"
 import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
 import { useState } from "react"
 import { DeleteExchangeApiDialog } from "./delete-exchange-dialog"
+import { UpdateExchangeApiSheet } from "./update-exchange-sheet"
 
 // export const orderColumns: ColumnDef<Payment>[] = [
 export const orderColumns: ColumnDef<BitGetHistoryOrder>[] = [
@@ -411,11 +412,11 @@ export const exchangeApiInfoColumns: ColumnDef<ExchangeApiInfo>[] = [
 
       return (
         <>
-        {/* <UpdateExchangeApiSheet
+        <UpdateExchangeApiSheet
           open={showUpdateTaskSheet}
           onOpenChange={setShowUpdateTaskSheet}
           task={row.original}
-        /> */}
+        />
         <DeleteExchangeApiDialog
           open={showDeleteTaskDialog}
           onOpenChange={setShowDeleteTaskDialog}

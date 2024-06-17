@@ -1,7 +1,7 @@
 "use server"
 
 import { unstable_noStore as noStore, revalidatePath } from "next/cache"
-import { CreateExchangeApiSchema } from "@/lib/validations/exchange"
+import { CreateExchangeApiSchema, UpdateExchangeApiSchema } from "@/lib/validations/exchange"
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
 import { ExchangeApiInfo } from "@/app/(dashboard)/exchanges/page";
@@ -65,6 +65,36 @@ export async function getExchangeAPI(userId: string): Promise<ExchangeApiInfo[]>
   }
 }
 
+export async function updateExchangeAPI(input: UpdateExchangeApiSchema & { id: string }) {
+  noStore()
+  try {
+    await prisma.exchangeAccount
+      .update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          apiKey: input.api,
+          secretKey: input.secret,
+          passphrase: input.passphrase,
+          description: input.description,
+        },
+      })
+
+    revalidatePath("/exchanges")
+
+    return {
+      data: null,
+      error: null,
+    }
+  } catch (err) {
+    return {
+      data: null,
+      error: (err),
+    }
+  }
+}
+
 export async function deleteExchangeAPI(input: { ids: string[] }) {
   try {
 
@@ -76,8 +106,8 @@ export async function deleteExchangeAPI(input: { ids: string[] }) {
         }
       },
     })
-    console.log(result)
-    revalidatePath("/")
+    
+    revalidatePath("/exchanges")
 
     return {
       data: null,
