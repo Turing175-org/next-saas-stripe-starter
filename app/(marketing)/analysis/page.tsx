@@ -158,7 +158,7 @@ export default function AnalysisPage() {
   };
   
   return (
-    <>
+    // <>
     <Suspense fallback={<div>Loading...</div>}>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <Tabs defaultValue={defaultTabValue} className="space-y-4">
@@ -209,6 +209,6 @@ export default function AnalysisPage() {
 
       </div>
       </Suspense>
-    </>
+    // </>
   )
 }

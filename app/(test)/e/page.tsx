@@ -5,7 +5,6 @@ import { CreateExchangeDialog } from "@/app/_components/create-exchange-dialog";
 import { DataTable } from "@/app/_components/data-table";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { DashboardShell } from "@/components/dashboard/shell";
-import { getCurrentUser } from "@/lib/session";
 
 const mockData: ExchangeApiInfo[] = [
   {
