@@ -2,13 +2,13 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { toast } from "sonner"
 import { DataTable } from "@/app/_components/data-table"
 import { okxOrderColumns, orderColumns } from "@/app/_components/columns"
 import { Input } from "@/components/ui/input-table"
 import { Separator } from "@/components/ui/separator"
-import { useSearchParams } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 
 export type BitGetHistoryOrder = {
   trackingNo: string;
@@ -159,6 +159,7 @@ export default function AnalysisPage() {
   
   return (
     <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <Tabs defaultValue={defaultTabValue} className="space-y-4">
           <TabsList>
@@ -207,7 +208,7 @@ export default function AnalysisPage() {
         
 
       </div>
-
+      </Suspense>
     </>
   )
 }
