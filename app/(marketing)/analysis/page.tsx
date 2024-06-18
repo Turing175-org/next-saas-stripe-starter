@@ -8,7 +8,7 @@ import { DataTable } from "@/app/_components/data-table"
 import { okxOrderColumns, orderColumns } from "@/app/_components/columns"
 import { Input } from "@/components/ui/input-table"
 import { Separator } from "@/components/ui/separator"
-import { usePathname, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 
 export type BitGetHistoryOrder = {
   trackingNo: string;
