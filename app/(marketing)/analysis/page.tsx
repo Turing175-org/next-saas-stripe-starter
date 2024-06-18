@@ -8,6 +8,7 @@ import { DataTable } from "@/app/_components/data-table"
 import { okxOrderColumns, orderColumns } from "@/app/_components/columns"
 import { Input } from "@/components/ui/input-table"
 import { Separator } from "@/components/ui/separator"
+import { useSearchParams } from "next/navigation"
 
 export type BitGetHistoryOrder = {
   trackingNo: string;
@@ -103,11 +104,29 @@ async function getOkxHistoryOrder(traderId: string) {
 }
 
 export default function AnalysisPage() {
-  const [order, setOrder] = useState<BitGetHistoryOrder[]>([]);
+  const [bitgetOrder, setBitgetOrder] = useState<BitGetHistoryOrder[]>([]);
   // const [binanceOrder, setBinanceOrder] = useState<BinanceHistoryOrder[]>([]);
   const [okxOrder, setOkxOrder] = useState<OkxHistoryOrder[]>([]);
   const [traderId, setTraderId] = useState<string>('');
   const [okxOraderId, setOkxTraderId] = useState<string>('');
+
+  const searchParams = useSearchParams()
+  const bitgetTraderId = searchParams.get('bitgetTraderId')
+  const okxTraderId = searchParams.get('okxTraderId')
+  // console.log("params:", searchParams)
+
+  const defaultTabValue = okxTraderId ? "okx":"bitget";
+
+  useEffect(() => {
+    if (bitgetTraderId) {
+      setTraderId(bitgetTraderId);
+    }
+  }, [bitgetTraderId]);
+  useEffect(() => {
+    if (okxTraderId) {
+      setOkxTraderId(okxTraderId);
+    }
+  }, [okxTraderId]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTraderId(event.target.value);
@@ -115,7 +134,7 @@ export default function AnalysisPage() {
 
   useEffect(() => {
     if (traderId) {
-      getBitgetHistoryOrder(traderId).then(data => setOrder(data));
+      getBitgetHistoryOrder(traderId).then(data => setBitgetOrder(data));
     }
   }, [traderId]);
   useEffect(() => {
@@ -137,17 +156,17 @@ export default function AnalysisPage() {
     const id = formData.get('okxTraderId') as string;
     setOkxTraderId(id);
   };
-
+  
   return (
     <>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
-        <Tabs defaultValue="Bitget" className="space-y-4">
+        <Tabs defaultValue={defaultTabValue} className="space-y-4">
           <TabsList>
-            <TabsTrigger value="Bitget">Bitget</TabsTrigger>
+            <TabsTrigger value="bitget">Bitget</TabsTrigger>
             <TabsTrigger value="binance">Binance</TabsTrigger>
             <TabsTrigger value="okx">OKX</TabsTrigger>
           </TabsList>
-          <TabsContent value="Bitget" className="space-y-4">
+          <TabsContent value="bitget" className="space-y-4">
             {/* <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60"> */}
             <div>
               <form onSubmit={handleBitgetOrderSubmit}>
@@ -157,7 +176,7 @@ export default function AnalysisPage() {
                 </div>
               </form>
             </div>
-            <DataTable data={order} columns={orderColumns} />
+            <DataTable data={bitgetOrder} columns={orderColumns} />
           </TabsContent>
           <TabsContent value="binance" className="space-y-4">
             <div >

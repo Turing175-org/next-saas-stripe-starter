@@ -1,17 +1,92 @@
 "use client"
 
-import { BitGetHistoryOrder, OkxHistoryOrder } from "@/app/(marketing)/analysis/page";
-import { okxOrderColumns, orderColumns } from "@/app/_components/columns";
+import { OkxHistoryOrder } from "@/app/(marketing)/analysis/page";
+import { bitgetTraderColumns, okxOrderColumns } from "@/app/_components/columns";
 import { DataTable } from "@/app/_components/data-table";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { DashboardShell } from "@/components/dashboard/shell";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { GetServerSideProps } from "next";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
-export default async function TradersPage() {
-  const [order, setOrder] = useState<BitGetHistoryOrder[]>([]);
+export type BitgetTrader = {
+  canTrace: string;
+  traderId: string;
+  traderName: string;
+  maxLimit: string;
+  bgbMaxFollowLimit: string;
+  followCount: string;
+  bgbFollowCount: string;
+  traderStatus: string;
+  currentTradingList: string[];
+  columnList: {
+    describe: string;
+    value: string;
+  }[];
+  totalFollowers: string;
+  profitCount: string;
+  lossCount: string;
+  tradeCount: string;
+  traderPic: string;
+  maxCallbackRate: string;
+  averageWinRate: string;
+  dailyProfitRateList: {
+    rate: string;
+    cTime: string;
+  }[];
+  dailyProfitList: {
+    amount: string;
+    cTime: string;
+  }[];
+  followerTotalProfit: string;
+  profitRate24hList: {
+    rate: string;
+    cTime: string;
+  }[];
+  profit24hList: {
+    amount: string;
+    cTime: string;
+  }[];
+  lastTradeTime: string;
+  tradeDays: string;
+};
+
+async function getBitgetTraders(traderId: string) {
+  try {
+    const response = await fetch(`https://45.77.180.194:8000/api/bitget/traders?traderId=${traderId}`)
+    if (!response.ok) {
+      throw new Error("Network response was not ok")
+    }
+    const {data, pageCount} = await response.json() as { data: BitgetTrader[], pageCount: number }
+    console.log("getBitgetTraders:", data.length);
+    // toast.error("Fake An unknown error occurred, check console for more message", {
+    //   description: "Your name was not updated. Please try again.",
+    //   position: "top-center",
+    //   duration: 5000,
+    //   // cancel: {
+    //   //   label: 'Cancel',
+    //   //   onClick: () => console.log('Cancel!'),
+    //   // },
+    // });
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      toast.error(error.message);
+    } else {
+      toast.error("An unknown error occurred, check console for more message", {
+        position: "top-center",
+      });
+    }
+    console.error("Failed to fetch order data:", error);
+    return [];
+  }
+}
+
+export default function TradersPage() {
+  const [bitgetTrader, setBitgetTrader] = useState<BitgetTrader[]>([]);
   const [okxOrder, setOkxOrder] = useState<OkxHistoryOrder[]>([]);
   const [traderId, setTraderId] = useState<string>('');
   const [okxOraderId, setOkxTraderId] = useState<string>('');
@@ -23,6 +98,16 @@ export default async function TradersPage() {
     setOkxTraderId(id);
   };
 
+  useEffect(() => {
+    const fetchBitgetData = async () => {
+      const bitgetdata = await getBitgetTraders("");
+      console.log("bitgetdata:", bitgetdata);
+      setBitgetTrader(bitgetdata);
+    };
+
+    fetchBitgetData();
+  }, []);
+  
   return (
     <DashboardShell>
       <DashboardHeader
@@ -49,7 +134,7 @@ export default async function TradersPage() {
                 </div>
               </form>
             </div> */}
-            <DataTable data={order} columns={orderColumns} />
+            <DataTable data={bitgetTrader} columns={bitgetTraderColumns} />
           </TabsContent>
           <TabsContent value="binance" className="space-y-4">
             <div >

@@ -16,6 +16,7 @@ import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
 import { useState } from "react"
 import { DeleteExchangeApiDialog } from "./delete-exchange-dialog"
 import { UpdateExchangeApiSheet } from "./update-exchange-sheet"
+import { BitgetTrader } from "../(dashboard)/traders/page"
 
 // export const orderColumns: ColumnDef<Payment>[] = [
 export const orderColumns: ColumnDef<BitGetHistoryOrder>[] = [
@@ -320,6 +321,170 @@ export const okxOrderColumns: ColumnDef<OkxHistoryOrder>[] = [
               onClick={() => navigator.clipboard.writeText(payment.subPosId)}
             >
               Copy SubPosId
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>View customer</DropdownMenuItem>
+            {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )
+    },
+  },
+]
+
+export const bitgetTraderColumns: ColumnDef<BitgetTrader>[] = [
+  // {
+  //   id: "select",
+  //   header: ({ table }) => (
+  //     <Checkbox
+  //       checked={
+  //         table.getIsAllPageRowsSelected() ||
+  //         (table.getIsSomePageRowsSelected() && "indeterminate")
+  //       }
+  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //       aria-label="Select all"
+  //       className="translate-y-[2px]"
+  //     />
+  //   ),
+  //   cell: ({ row }) => (
+  //     <Checkbox
+  //       checked={row.getIsSelected()}
+  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //       aria-label="Select row"
+  //       className="translate-y-[2px]"
+  //     />
+  //   ),
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
+  {
+    accessorKey: "traderName",
+    header: "traderName",
+    cell: ({ row }) => (
+      <div>{row.getValue("traderName")}</div>
+    ),
+  },
+  {
+    accessorKey: "TotalPnL",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Total PnL" />
+    ),
+    cell: ({ row }) => {
+      const columnList = row.original.columnList;
+      const pnlItem = columnList[1];
+      const pnlValue = pnlItem ? pnlItem.value : "";
+      return <div>{pnlValue}</div>;
+    },
+  },
+  {
+    accessorKey: "ROI",
+    // header: "ROI",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="ROI" />
+    ),
+    cell: ({ row }) => {
+      const columnList = row.original.columnList;
+      const roiItem = columnList[0];
+      const roiValue = roiItem ? roiItem.value : "";
+      return <div>{roiValue}%</div>;
+    },
+  },
+  {
+    accessorKey: "AUM",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="AUM" />
+    ),
+    // header: ({ column }) => {
+    //   return (
+    //     <Button
+    //       variant="ghost"
+    //       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    //     >
+    //       数量
+    //       <ArrowUpDown className="ml-2 h-4 w-4" />
+    //     </Button>
+    //   )
+    // },
+    cell: ({ row }) => {
+      const columnList = row.original.columnList;
+      const aumItem = columnList[3];
+      const aumValue = aumItem ? aumItem.value : "";
+      return <div>{aumValue}</div>;
+    },
+  },
+  {
+    accessorKey: "Maxdrawdown",
+    header: "Max drawdown",
+    cell: ({ row }) => {
+      const columnList = row.original.columnList;
+      const aumItem = columnList[4];
+      const aumValue = aumItem ? aumItem.value : "";
+      return <div>{aumValue}%</div>;
+    },
+  },
+  // {
+  //   accessorKey: "margin",
+  //   header: "已实现盈亏",
+  //   cell: ({ row }) => {
+  //     const margin2 = row.getValue("closePriceAvg") as number;
+  //     const margin1 = row.getValue("openPriceAvg") as number;
+  //     const size = row.getValue("openSize") as number;
+  //     var margin = size*(margin2 - margin1);
+  //     if (row.getValue("posSide")=="short") {
+  //       margin = -margin;
+  //     }
+  //     const marginFormatted = margin.toFixed(2);
+  //     const textColor = margin >= 0 ? "text-green-500" : "text-red-500";
+  //     const formattedMarginAmount = margin >= 0 ? `+${marginFormatted}` : marginFormatted;
+
+  //     return (
+  //       <div className="w-5 whitespace-nowrap">
+  //         <span className={textColor}>{formattedMarginAmount}</span> USDT
+  //       </div>
+  //     )
+  //   },
+  //   // enableSorting: false,
+  // },
+  // {
+  //   accessorKey: "trackingNo",
+  //   // header: ({ column }) => (
+  //   //       <DataTableColumnHeader column={column} title="trackingNo" />
+  //   //     ),
+  //   header: ({ column }) => {
+  //     return (
+  //       <Button
+  //         variant="ghost"
+  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //       >
+  //         订单编号
+  //         <ArrowUpDown className="ml-2 h-4 w-4" />
+  //       </Button>
+  //     )
+  //   },
+  //   cell: ({ row }) => (
+  //     <div className="capitalize">{row.getValue("trackingNo")}</div>
+  //   ),
+  // },
+  {
+    id: "actions",
+    enableHiding: false,
+    cell: ({ row }) => {
+      const payment = row.original
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() => navigator.clipboard.writeText(payment.traderId)}
+            >
+              Copy TraderId
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View customer</DropdownMenuItem>
