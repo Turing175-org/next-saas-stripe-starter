@@ -72,7 +72,7 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateTaskSheetProps)
 
       form.reset()
       props.onOpenChange?.(false)
-      toast.success("Task updated")
+      toast.success("API updated")
     })
   }
 

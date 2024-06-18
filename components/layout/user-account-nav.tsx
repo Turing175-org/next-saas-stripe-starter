@@ -56,6 +56,15 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
+            href="/exchanges"
+            className="flex items-center space-x-2.5"
+          >
+            <CreditCard className="size-4" />
+            <p className="text-sm">Exchanges</p>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link
             href="/billing"
             className="flex items-center space-x-2.5"
           >
