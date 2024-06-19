@@ -2,7 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search } from "lucide-react"
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, useEffect, useMemo, useState } from "react"
 import { toast } from "sonner"
 import { DataTable } from "@/app/_components/data-table"
 import { okxOrderColumns, orderColumns } from "@/app/_components/columns"
@@ -103,22 +103,19 @@ async function getOkxHistoryOrder(traderId: string) {
   }
 }
 
-function SearchBar({name, placeholder}) {
-  const searchParams = useSearchParams()
-  const bitgetTraderId = searchParams.get('bitgetTraderId')
-  const okxTraderId = searchParams.get('okxTraderId')
- 
-  // const search = searchParams.get('search')
- 
-  // This will not be logged on the server when using static rendering
-  console.log("searchParams:", searchParams)
- 
-  return <>                
+function SearchBar({ name, placeholder, value, onChange }) {
+  return (
     <div className="relative">
-    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-    <Input name={name} placeholder={placeholder} className="pl-8" />
-  </div>
-  </>
+      <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+      <Input
+        name={name}
+        placeholder={placeholder}
+        className="pl-8"
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
 }
 function SearchBarFallback() {
   return <>Loading...</>
@@ -129,8 +126,9 @@ export default function AnalysisPage() {
   // const [binanceOrder, setBinanceOrder] = useState<BinanceHistoryOrder[]>([]);
   const [okxOrder, setOkxOrder] = useState<OkxHistoryOrder[]>([]);
   const [traderId, setTraderId] = useState<string>('');
-  const [okxOraderId, setOkxTraderId] = useState<string>('');
-
+  const [okxTraderId, setOkxTraderId] = useState<string>('');
+  const [tabValue, setTabValue] = useState<string>('bitget');
+  const [bitgetTraderId, setBitgetTraderId] = useState<string>("");
   // const searchParams = useSearchParams()
   // const bitgetTraderId = searchParams.get('bitgetTraderId')
   // const okxTraderId = searchParams.get('okxTraderId')
@@ -148,6 +146,24 @@ export default function AnalysisPage() {
   //     setOkxTraderId(okxTraderId);
   //   }
   // }, [okxTraderId]);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const bitgetTraderId = searchParams.get("bitgetTraderId");
+    const okxTraderId = searchParams.get("okxTraderId");
+
+    if (bitgetTraderId) {
+      setBitgetTraderId(bitgetTraderId);
+      getBitgetHistoryOrder(bitgetTraderId).then((data) =>
+        setBitgetOrder(data)
+      );
+    }
+
+    if (okxTraderId) {
+      setOkxTraderId(okxTraderId);
+      getOkxHistoryOrder(okxTraderId).then((data) => setOkxOrder(data));
+    }
+  }, [searchParams]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTraderId(event.target.value);
@@ -159,10 +175,19 @@ export default function AnalysisPage() {
     }
   }, [traderId]);
   useEffect(() => {
-    if (okxOraderId) {
-      getOkxHistoryOrder(okxOraderId).then(data => setOkxOrder(data));
+    if (okxTraderId) {
+      getOkxHistoryOrder(okxTraderId).then(data => setOkxOrder(data));
     }
-  }, [okxOraderId]);
+  }, [okxTraderId]);
+  const handleBitgetTraderIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBitgetTraderId(event.target.value);
+    getBitgetHistoryOrder(event.target.value).then((data) => setBitgetOrder(data));
+  };
+
+  const handleOkxTraderIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOkxTraderId(event.target.value);
+    getOkxHistoryOrder(event.target.value).then((data) => setOkxOrder(data));
+  };
 
   const handleBitgetOrderSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -193,7 +218,12 @@ export default function AnalysisPage() {
             <div>
               <form onSubmit={handleBitgetOrderSubmit}>
                 <Suspense fallback={<SearchBarFallback />}>
-                  <SearchBar name="bitgetTraderId" placeholder="Search Bitget TraderId" />
+                  <SearchBar
+                  name="bitgetTraderId"
+                  placeholder="Search Bitget TraderId"
+                  value={bitgetTraderId}
+                  onChange={handleBitgetTraderIdChange}
+                />
                 </Suspense>
                 {/* <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -207,10 +237,16 @@ export default function AnalysisPage() {
             <div >
               {/* <form onSubmit={handleBinanceSubmit}> */}
               <form>
-                <div className="relative">
+                <Suspense fallback={<SearchBarFallback />}>
+                  <SearchBar name="binanceTraderId" placeholder="Search Binance TraderId"
+                  value={bitgetTraderId}
+                  onChange={handleBitgetTraderIdChange}
+                   />
+                </Suspense>
+                {/* <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input name="binanceTraderId" placeholder="Search Binance TraderId" className="pl-8" />
-                </div>
+                </div> */}
               </form>
             </div>
             {/* <DataTable data={binanceOrder} columns={binanceOrderColumns} /> */}
@@ -218,10 +254,18 @@ export default function AnalysisPage() {
           <TabsContent value="okx" className="space-y-4">
             <div >
               <form onSubmit={handleOKXSubmit}>
-                <div className="relative">
+                <Suspense fallback={<SearchBarFallback />}>
+                  <SearchBar
+                  name="okxTraderId"
+                  placeholder="Search OKX TraderId"
+                  value={okxTraderId}
+                  onChange={handleOkxTraderIdChange}
+                />
+              </Suspense>
+                {/* <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input name="okxTraderId" placeholder="Search OKX TraderId" className="pl-8" />
-                </div>
+                </div> */}
               </form>
             </div>
             <DataTable data={okxOrder} columns={okxOrderColumns} />
