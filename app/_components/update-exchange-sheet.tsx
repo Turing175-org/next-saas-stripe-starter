@@ -65,8 +65,8 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiShee
     defaultValues: {
       // title: task.title ?? "",
       api: task.apiKey,
-      secret: "password",
-      passphrase: "password",
+      // secret: "password",
+      // passphrase: "password",
       description: task.description ?? "",
     },
   })
@@ -75,9 +75,9 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiShee
     // noStore();
     startUpdateTransition(async () => {
       const updateData: any = {
+        id: task.id,
         api: input.api,
         description: input.description,
-        id: task.id,
       };
 
       if (secretUpdated) {
