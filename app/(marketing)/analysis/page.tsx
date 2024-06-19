@@ -103,6 +103,27 @@ async function getOkxHistoryOrder(traderId: string) {
   }
 }
 
+export function SearchBar({name, placeholder}) {
+  const searchParams = useSearchParams()
+  const bitgetTraderId = searchParams.get('bitgetTraderId')
+  const okxTraderId = searchParams.get('okxTraderId')
+ 
+  // const search = searchParams.get('search')
+ 
+  // This will not be logged on the server when using static rendering
+  console.log("searchParams:", searchParams)
+ 
+  return <>                
+    <div className="relative">
+    <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+    <Input name={name} placeholder={placeholder} className="pl-8" />
+  </div>
+  </>
+}
+function SearchBarFallback() {
+  return <>Loading...</>
+}
+
 export default function AnalysisPage() {
   const [bitgetOrder, setBitgetOrder] = useState<BitGetHistoryOrder[]>([]);
   // const [binanceOrder, setBinanceOrder] = useState<BinanceHistoryOrder[]>([]);
@@ -158,8 +179,7 @@ export default function AnalysisPage() {
   };
   
   return (
-    // <>
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <Tabs defaultValue={defaultTabValue} className="space-y-4">
           <TabsList>
@@ -171,10 +191,13 @@ export default function AnalysisPage() {
             {/* <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60"> */}
             <div>
               <form onSubmit={handleBitgetOrderSubmit}>
-                <div className="relative">
+                <Suspense fallback={<SearchBarFallback />}>
+                  <SearchBar name="bitgetTraderId" placeholder="Search Bitget TraderId" />
+                </Suspense>
+                {/* <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input name="bitgetTraderId" placeholder="Search Bitget TraderId" className="pl-8" />
-                </div>
+                </div> */}
               </form>
             </div>
             <DataTable data={bitgetOrder} columns={orderColumns} />
@@ -206,9 +229,7 @@ export default function AnalysisPage() {
 
         <Separator/>
         
-
       </div>
-      </Suspense>
-    // </>
+    </>
   )
 }

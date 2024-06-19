@@ -51,12 +51,7 @@ export default async function ExchangePage() {
   // const user = await getCurrentUser();
   const user = 1;
 
-  if (user) {
-    // const data = await fetchExchangeAPIs(user.id);
-    const data = await fetchExchangeAPIs("clxiz8v0z00004iggqdpyuyv3");
-
-  }
-  const {data, status} = await fetchExchangeAPIs("clxiz8v0z00004iggqdpyuyv3");
+  // const {data, status} = await fetchExchangeAPIs("clxiz8v0z00004iggqdpyuyv3");
 
   return (
     <DashboardShell>
