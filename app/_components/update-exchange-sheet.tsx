@@ -65,8 +65,8 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiShee
     defaultValues: {
       // title: task.title ?? "",
       api: task.apiKey,
-      // secret: "password",
-      // passphrase: "password",
+      secret: undefined,
+      passphrase: undefined,
       description: task.description ?? "",
     },
   })
