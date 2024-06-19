@@ -17,6 +17,7 @@ import { useState } from "react"
 import { DeleteExchangeApiDialog } from "./delete-exchange-dialog"
 import { UpdateExchangeApiSheet } from "./update-exchange-sheet"
 import { BitgetTrader } from "../(dashboard)/traders/page"
+import Link from "next/link"
 
 // export const orderColumns: ColumnDef<Payment>[] = [
 export const orderColumns: ColumnDef<BitGetHistoryOrder>[] = [
@@ -472,6 +473,10 @@ export const bitgetTraderColumns: ColumnDef<BitgetTrader>[] = [
       const payment = row.original
 
       return (
+        <>
+        <Button size="ssm">
+          Copy Trade
+        </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
@@ -480,7 +485,15 @@ export const bitgetTraderColumns: ColumnDef<BitgetTrader>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>Actions</DropdownMenuLabel> */}
+            <Link
+                href={`/analysis?bitgetTraderId=${encodeURIComponent(payment.traderId)}`}
+                target="_blank"
+              >
+              <DropdownMenuItem>
+                  Analysis
+              </DropdownMenuItem>
+            </Link>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.traderId)}
             >
@@ -491,6 +504,7 @@ export const bitgetTraderColumns: ColumnDef<BitgetTrader>[] = [
             {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
+        </>
       )
     },
   },

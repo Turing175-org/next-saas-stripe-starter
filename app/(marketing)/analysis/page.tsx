@@ -140,7 +140,7 @@ export default function AnalysisPage({ searchParams }: IndexPageProps) {
   const pathname = usePathname()
   // const search = searchParamsSchema.parse(searchParams)
   console.log("searchParams", searchParams)
-  console.log("pathname", pathname)
+  // console.log("pathname", pathname)
 
   const bitgetTraderIdParam = searchParams.bitgetTraderId
   const binanceTraderIdParam = searchParams.binanceTraderId
