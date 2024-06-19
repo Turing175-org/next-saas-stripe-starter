@@ -103,7 +103,7 @@ async function getOkxHistoryOrder(traderId: string) {
   }
 }
 
-export function SearchBar({name, placeholder}) {
+function SearchBar({name, placeholder}) {
   const searchParams = useSearchParams()
   const bitgetTraderId = searchParams.get('bitgetTraderId')
   const okxTraderId = searchParams.get('okxTraderId')
