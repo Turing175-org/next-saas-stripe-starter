@@ -46,7 +46,6 @@ interface UpdateExchangeApiSheetProps
 }
 
 export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiSheetProps) {
-  noStore()
   const [isUpdatePending, startUpdateTransition] = React.useTransition()
   const [secretUpdated, setSecretUpdated] = useState(false);
   const [passphraseUpdated, setPassphraseUpdated] = useState(false);
