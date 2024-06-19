@@ -131,23 +131,23 @@ export default function AnalysisPage() {
   const [traderId, setTraderId] = useState<string>('');
   const [okxOraderId, setOkxTraderId] = useState<string>('');
 
-  const searchParams = useSearchParams()
-  const bitgetTraderId = searchParams.get('bitgetTraderId')
-  const okxTraderId = searchParams.get('okxTraderId')
+  // const searchParams = useSearchParams()
+  // const bitgetTraderId = searchParams.get('bitgetTraderId')
+  // const okxTraderId = searchParams.get('okxTraderId')
   // console.log("params:", searchParams)
 
-  const defaultTabValue = okxTraderId ? "okx":"bitget";
+  // const defaultTabValue = okxTraderId ? "okx":"bitget";
 
-  useEffect(() => {
-    if (bitgetTraderId) {
-      setTraderId(bitgetTraderId);
-    }
-  }, [bitgetTraderId]);
-  useEffect(() => {
-    if (okxTraderId) {
-      setOkxTraderId(okxTraderId);
-    }
-  }, [okxTraderId]);
+  // useEffect(() => {
+  //   if (bitgetTraderId) {
+  //     setTraderId(bitgetTraderId);
+  //   }
+  // }, [bitgetTraderId]);
+  // useEffect(() => {
+  //   if (okxTraderId) {
+  //     setOkxTraderId(okxTraderId);
+  //   }
+  // }, [okxTraderId]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTraderId(event.target.value);
@@ -181,7 +181,8 @@ export default function AnalysisPage() {
   return (
     <>
       <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
-        <Tabs defaultValue={defaultTabValue} className="space-y-4">
+        {/* <Tabs defaultValue={defaultTabValue} className="space-y-4"> */}
+        <Tabs defaultValue="bitget" className="space-y-4">
           <TabsList>
             <TabsTrigger value="bitget">Bitget</TabsTrigger>
             <TabsTrigger value="binance">Binance</TabsTrigger>
