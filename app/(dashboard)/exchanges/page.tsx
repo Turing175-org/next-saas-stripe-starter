@@ -12,8 +12,8 @@ export type ExchangeApiInfo = {
   userId: string
   exchangeName: string;
   apiKey: string;
-  secretKey: string;
-  passphrase: string | null;
+  // secretKey: string;
+  // passphrase: string | null;
   description: string | null;
   // createdAt: string;
   // updatedAt: string;

@@ -66,19 +66,26 @@ export async function getExchangeAPI(userId: string): Promise<ExchangeApiInfo[]>
 }
 
 export async function updateExchangeAPI(input: UpdateExchangeApiSchema & { id: string }) {
-  noStore()
+  // noStore()
   try {
+    const updateData: any = {
+      apiKey: input.api,
+      description: input.description,
+    };
+
+    if (input.secret) {
+      updateData.secretKey = input.secret;
+    }
+    if (input.passphrase) {
+      updateData.passphrase = input.passphrase;
+    }
+
     await prisma.exchangeAccount
       .update({
         where: {
           id: input.id,
         },
-        data: {
-          apiKey: input.api,
-          secretKey: input.secret,
-          passphrase: input.passphrase,
-          description: input.description,
-        },
+        data: updateData,
       })
 
     revalidatePath("/exchanges")

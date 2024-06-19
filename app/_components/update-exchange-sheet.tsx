@@ -38,32 +38,61 @@ import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
 import { Input } from "@/components/ui/input"
 import { UpdateExchangeApiSchema, updateExchangeApiSchema } from "@/lib/validations/exchange"
 import { updateExchangeAPI } from "@/actions/exchange"
+import { useState } from "react"
 
-interface UpdateTaskSheetProps
+interface UpdateExchangeApiSheetProps
   extends React.ComponentPropsWithRef<typeof Sheet> {
   task: ExchangeApiInfo
 }
 
-export function UpdateExchangeApiSheet({ task, ...props }: UpdateTaskSheetProps) {
+export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiSheetProps) {
   const [isUpdatePending, startUpdateTransition] = React.useTransition()
+  const [secretUpdated, setSecretUpdated] = useState(false);
+  const [passphraseUpdated, setPassphraseUpdated] = useState(false);
+  
+  const handleSecretChange = (e) => {
+    setSecretUpdated(e.target.value !== '');
+    form.setValue('secret', e.target.value);
+  };
+
+  const handlePassphraseChange = (e) => {
+    setPassphraseUpdated(e.target.value !== '');
+    form.setValue('passphrase', e.target.value);
+  };
 
   const form = useForm<UpdateExchangeApiSchema>({
     resolver: zodResolver(updateExchangeApiSchema),
     defaultValues: {
       // title: task.title ?? "",
       api: task.apiKey,
-      secret: task.secretKey,
-      passphrase: task.passphrase ?? "",
+      secret: "password",
+      passphrase: "password",
       description: task.description ?? "",
     },
   })
 
   function onSubmit(input: UpdateExchangeApiSchema) {
+    // noStore();
     startUpdateTransition(async () => {
-      const { error } = await updateExchangeAPI({
+      const updateData: any = {
+        api: input.api,
+        description: input.description,
         id: task.id,
-        ...input,
-      })
+      };
+
+      if (secretUpdated) {
+        updateData.secret = input.secret;
+      }
+
+      if (passphraseUpdated) {
+        updateData.passphrase = input.passphrase;
+      }
+
+      // const { error } = await updateExchangeAPI({
+      //   id: task.id,
+      //   ...input,
+      // })
+      const { error } = await updateExchangeAPI(updateData);
 
       if (error) {
         toast.error(error)
@@ -115,7 +144,9 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateTaskSheetProps)
                   <FormControl>
                     <Input
                       placeholder="Enter API secret"
-                      {...field}
+                      type="password"
+                      onChange={handleSecretChange}
+                      // {...field}
                     />
                   </FormControl>
                   <FormMessage />
@@ -131,7 +162,9 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateTaskSheetProps)
                   <FormControl>
                     <Input
                       placeholder="Enter passphrase"
-                      {...field}
+                      type="password"
+                      onChange={handlePassphraseChange}
+                      // {...field}
                     />
                   </FormControl>
                   <FormMessage />

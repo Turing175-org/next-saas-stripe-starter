@@ -12,8 +12,8 @@ const mockData: ExchangeApiInfo[] = [
     userId: '1',
     exchangeName: 'Binance',
     apiKey: 'api-key-1',
-    secretKey: 'secret-key-1',
-    passphrase: 'passphrase-1',
+    // secretKey: 'secret-key-1',
+    // passphrase: 'passphrase-1',
     description: 'Binance account',
   },
   {
@@ -21,8 +21,6 @@ const mockData: ExchangeApiInfo[] = [
     userId: '1',
     exchangeName: 'Coinbase',
     apiKey: 'api-key-2',
-    secretKey: 'secret-key-2',
-    passphrase: 'passphrase-2',
     description: 'Coinbase account',
   },
   {
@@ -30,8 +28,6 @@ const mockData: ExchangeApiInfo[] = [
     userId: '1',
     exchangeName: 'OKX',
     apiKey: 'api-key-3',
-    secretKey: 'secret-key-3',
-    passphrase: null,
     description: 'OKX account',
   }
 ];
