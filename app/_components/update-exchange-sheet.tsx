@@ -145,6 +145,7 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiShee
                     <Input
                       placeholder="Enter API secret"
                       type="password"
+                      defaultValue="password"
                       onChange={handleSecretChange}
                       // {...field}
                     />
@@ -163,6 +164,7 @@ export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiShee
                     <Input
                       placeholder="Enter passphrase"
                       type="password"
+                      defaultValue="password"
                       onChange={handlePassphraseChange}
                       // {...field}
                     />
