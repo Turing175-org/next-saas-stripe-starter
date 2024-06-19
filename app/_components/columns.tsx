@@ -474,7 +474,7 @@ export const bitgetTraderColumns: ColumnDef<BitgetTrader>[] = [
 
       return (
         <>
-        <Button size="ssm">
+        <Button className="h-7 px-2">
           Copy Trade
         </Button>
         <DropdownMenu>
