@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
-
+import { unstable_noStore as noStore } from 'next/cache';
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -46,6 +46,7 @@ interface UpdateExchangeApiSheetProps
 }
 
 export function UpdateExchangeApiSheet({ task, ...props }: UpdateExchangeApiSheetProps) {
+  noStore()
   const [isUpdatePending, startUpdateTransition] = React.useTransition()
   const [secretUpdated, setSecretUpdated] = useState(false);
   const [passphraseUpdated, setPassphraseUpdated] = useState(false);
