@@ -66,8 +66,7 @@ export async function getExchangeAPI(userId: string): Promise<ExchangeApiInfo[]>
 }
 
 export async function updateExchangeAPI(input: UpdateExchangeApiSchema & { id: string }) {
-  // noStore()
-  console.log(input)
+  noStore()
   try {
     const updateData: any = {
       apiKey: input.api,
