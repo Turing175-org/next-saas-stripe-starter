@@ -499,8 +499,8 @@ export const bitgetTraderColumns: ColumnDef<BitgetTrader>[] = [
             >
               Copy TraderId
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
+            {/* <DropdownMenuSeparator /> */}
+            {/* <DropdownMenuItem>View customer</DropdownMenuItem> */}
             {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
