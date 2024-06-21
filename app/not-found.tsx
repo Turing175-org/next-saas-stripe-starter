@@ -11,7 +11,7 @@ export const metadata = constructMetadata({
 
 export default function NotFoundPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col ">
       <NavMobile />
       <NavBar scroll={false} />
       <div className="flex grow flex-col items-center justify-center">
