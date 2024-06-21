@@ -6,14 +6,14 @@ const site_url = env.NEXT_PUBLIC_APP_URL;
 export const siteConfig: SiteConfig = {
   name: "Moon Crypto",
   description:
-    "Get your project off to an explosive start with SaaS Starter! Harness the power of Next.js 14, Prisma, Neon, Auth.js v5, Resend, React Email, Shadcn/ui and Stripe to build your next big thing.",
+    "Moon Crypto is a top crypto copy trading platform, enabling users to follow expert traders and grow their assets effortlessly. Join us and watch your investments soar!",
   url: site_url,
   ogImage: `${site_url}/og.jpg`,
   links: {
     twitter: "https://twitter.com/miickasmt",
     github: "https://github.com/mickasmt/next-saas-stripe-starter",
   },
-  mailSupport: "support@saas-starter.com",
+  mailSupport: "support@mooncrypto.com",
 };
 
 export const footerLinks: SidebarNavItem[] = [

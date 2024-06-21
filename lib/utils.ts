@@ -27,14 +27,16 @@ export function constructMetadata({
     title,
     description,
     keywords: [
+      "Crypto",
+      "Bitcoin",
+      "ETH",
+      "Trading",
       "Next.js",
       "React",
       "Prisma",
       "Neon",
-      "Auth.js",
       "shadcn ui",
       "Resend",
-      "React Email",
       "Stripe",
     ],
     authors: [
