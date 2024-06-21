@@ -14,9 +14,9 @@ export default function NotFoundPage() {
     <div className="flex flex-col min-h-screen">
       <NavMobile />
       <NavBar scroll={false} />
-      <div className="flex grow flex-col items-center justify-center">
-        <h1 className="mb-4 text-8xl font-bold">404</h1>
-        <p className="mb-4 text-gray-600">Sorry, we couldn't find the page you're looking for.</p>
+      <div className="flex flex-col grow items-center justify-center">
+        <h1 className="text-8xl font-bold mb-4">404</h1>
+        <p className="text-gray-600 mb-4">Sorry, we couldn&apos;t find the page you&apos;re looking for.</p>
         <Link href="/">
           <Button>
           {"<-"} Return Home
