@@ -4,8 +4,7 @@ import { unstable_noStore as noStore, revalidatePath } from "next/cache"
 import { CreateExchangeApiSchema, UpdateExchangeApiSchema } from "@/lib/validations/exchange"
 import { auth } from "@/auth";
 import { prisma } from "@/lib/db";
-import { ExchangeApiInfo } from "@/app/(dashboard)/exchanges/page";
-
+import { ExchangeApiInfo } from "@/app/(protected)/exchanges/page";
 
 export async function createExchangeAPI(userId: string, input: CreateExchangeApiSchema) {
   // noStore()

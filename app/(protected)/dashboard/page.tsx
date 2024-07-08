@@ -1,33 +1,33 @@
 import { redirect } from "next/navigation";
 import Image from "next/image"
 
-import { DashboardHeader } from "@/components/dashboard/header";
-import { DashboardShell } from "@/components/dashboard/shell";
-import { EmptyPlaceholder } from "@/components/shared/empty-placeholder";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/session";
 import { constructMetadata } from "@/lib/utils";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Overview } from "@/app/_components/overview";
 import { RecentSales } from "@/app/_components/recent-sales";
+import { DashboardHeader } from "@/components/dashboard/header";
+import { DashboardShell } from "@/components/dashboard/shell";
+import { EmptyPlaceholder } from "@/components/shared/empty-placeholder";
 
 export const metadata = constructMetadata({
   title: "Settings – Moon Crypto",
   description: "Overview of your account and activities.",
 });
+// export const metadata = constructMetadata({
+//   title: "Panel – Moon Crypto",
+//   description: "Create and manage content.",
+// });
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
-
-  if (!user) {
-    redirect("/login");
-  }
 
   return (
     <DashboardShell>
       <DashboardHeader
         heading="Dashboard"
-        text=""
+        text={`Current Role : ${user?.role} — Change your role in settings.`}
       />
       {/* <div className="hidden flex-col md:flex"> */}
         {/* <div className="border-b">

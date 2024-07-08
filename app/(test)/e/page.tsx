@@ -1,5 +1,5 @@
 import { getExchangeAPI } from "@/actions/exchange";
-import { ExchangeApiInfo } from "@/app/(dashboard)/exchanges/page";
+import { ExchangeApiInfo } from "@/app/(protected)/exchanges/page";
 import { exchangeApiInfoColumns } from "@/app/_components/columns";
 import { CreateExchangeDialog } from "@/app/_components/create-exchange-dialog";
 import { DataTable } from "@/app/_components/data-table";

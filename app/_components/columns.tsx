@@ -12,11 +12,11 @@ import { DropdownMenu,
   DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { BitGetHistoryOrder, OkxHistoryOrder } from "../(marketing)/analysis/page"
 import { DataTableColumnHeader } from "./data-table-column-header"
-import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
+import { ExchangeApiInfo } from "../(protected)/exchanges/page"
 import { useState } from "react"
 import { DeleteExchangeApiDialog } from "./delete-exchange-dialog"
 import { UpdateExchangeApiSheet } from "./update-exchange-sheet"
-import { BitgetTrader } from "../(dashboard)/traders/page"
+import { BitgetTrader } from "../(protected)/traders/page"
 import Link from "next/link"
 
 // export const orderColumns: ColumnDef<Payment>[] = [

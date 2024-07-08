@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/sheet"
 import { Textarea } from "@/components/ui/textarea"
 
-import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
+import { ExchangeApiInfo } from "../(protected)/exchanges/page"
 import { Input } from "@/components/ui/input"
 import { UpdateExchangeApiSchema, updateExchangeApiSchema } from "@/lib/validations/exchange"
 import { updateExchangeAPI } from "@/actions/exchange"
