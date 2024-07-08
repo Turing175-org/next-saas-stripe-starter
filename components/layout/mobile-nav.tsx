@@ -20,13 +20,15 @@ export function NavMobile() {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
   const selectedLayout = useSelectedLayoutSegment();
-  const dashBoard = selectedLayout === "dashboard";
   const documentation = selectedLayout === "docs";
-  const links = documentation
-    ? docsConfig.mainNav
-    : dashBoard
-      ? dashboardConfig.mainNav
-      : marketingConfig.mainNav;
+
+  const configMap = {
+    docs: docsConfig.mainNav,
+    dashboard: dashboardConfig.mainNav,
+  };
+
+  const links =
+    (selectedLayout && configMap[selectedLayout]) || marketingConfig.mainNav;
 
   // prevent body scroll when modal is open
   useEffect(() => {
@@ -77,19 +79,35 @@ export function NavMobile() {
           ))}
 
           {session ? (
-            <li className="py-3">
-              <Link
-                href="/dashboard"
-                className="flex w-full font-medium capitalize"
-              >
-                Dashboard
-              </Link>
-            </li>
+            <>
+              {/* {session.user.role === "ADMIN" ? (
+                <li className="py-3">
+                  <Link
+                    href="/admin"
+                    onClick={() => setOpen(false)}
+                    className="flex w-full font-medium capitalize"
+                  >
+                    Admin
+                  </Link>
+                </li>
+              ) : null} */}
+
+              <li className="py-3">
+                <Link
+                  href="/dashboard"
+                  onClick={() => setOpen(false)}
+                  className="flex w-full font-medium capitalize"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            </>
           ) : (
             <>
               <li className="py-3">
                 <Link
                   href="/login"
+                  onClick={() => setOpen(false)}
                   className="flex w-full font-medium capitalize"
                 >
                   Login
@@ -99,6 +117,7 @@ export function NavMobile() {
               <li className="py-3">
                 <Link
                   href="/register"
+                  onClick={() => setOpen(false)}
                   className="flex w-full font-medium capitalize"
                 >
                   Sign up

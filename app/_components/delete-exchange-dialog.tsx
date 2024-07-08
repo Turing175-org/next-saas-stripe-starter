@@ -18,7 +18,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { deleteExchangeAPI } from "@/actions/exchange"
-import { ExchangeApiInfo } from "../(dashboard)/exchanges/page"
+import { ExchangeApiInfo } from "../(protected)/exchanges/page"
 
 
 interface DeleteExchangeApiDialogProps

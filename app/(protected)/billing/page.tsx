@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { BillingInfo } from "@/components/billing-info";
+// import { BillingInfo } from "@/components/billing-info";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { DashboardShell } from "@/components/dashboard/shell";
 import { Icons } from "@/components/shared/icons";
@@ -11,6 +11,7 @@ import { constructMetadata } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { BillingInfo } from "@/components/pricing/billing-info";
 
 export const metadata = constructMetadata({
   title: "Billing – Moon Crypto",
@@ -24,7 +25,7 @@ export default async function BillingPage() {
     redirect("/login");
   }
 
-  const userSubscriptionPlan = await getUserSubscriptionPlan(user.id);
+  const userSubscriptionPlan = await getUserSubscriptionPlan(user.id!);
 
   return (
     <DashboardShell>

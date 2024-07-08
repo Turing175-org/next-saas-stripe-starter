@@ -1,5 +1,5 @@
 <a href="https://next-saas-stripe-starter.vercel.app">
-  <img alt="SaaS Starter" src="public/og.png">
+  <img alt="SaaS Starter" src="public/_static/og.png">
   <h1 align="center">Next SaaS Stripe Starter</h1>
 </a>
 
@@ -36,6 +36,12 @@ Clone & create this repo locally with the following command:
 npx create-next-app my-saas-project --example "https://github.com/mickasmt/next-saas-stripe-starter"
 ```
 
+Or, deploy with Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmickasmt%2Fnext-saas-stripe-starter)
+
+### Steps
+
 1. Install dependencies using pnpm:
 
 ```sh
@@ -59,20 +65,7 @@ pnpm run dev
 >
 > Use this command for update your project: `ncu -i --format group`
 
-> [!WARNING]  
-> You need update `.react-email` folder before use `pnpm run email`. Check the link [here](https://github.com/resend/react-email/issues/868#issuecomment-1828411325) if you have the error : `renderToReadableStream not found`
-
 ## Roadmap
-
-- [x] ~Fix Vaul drawer for mobile sign in~
-- [x] ~Update OG image~
-- [x] ~Add Server Actions on billing form (stripe)~
-- [x] ~Add Server Actions on user name form~
-- [x] ~Upgrade Auth.js to v5~
-- [x] ~Change database platform for Neon (planetscale removes its free plan on April 2024)~
-- [x] ~Switch subscription plan (enable on stripe dashboard)~
-- [x] ~Update documentation for installation & configuration~
-- [ ] Improve blog design
 - [ ] Upgrade eslint to v9
 - [ ] Add resend for success subscriptions
 

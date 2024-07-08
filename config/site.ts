@@ -8,7 +8,7 @@ export const siteConfig: SiteConfig = {
   description:
     "Moon Crypto is a top crypto copy trading platform, enabling users to follow expert traders and grow their assets effortlessly. Join us and watch your investments soar!",
   url: site_url,
-  ogImage: `${site_url}/og.png`,
+  ogImage: `${site_url}/_static/og.png`,
   links: {
     twitter: "https://twitter.com/miickasmt",
     github: "https://github.com/mickasmt/next-saas-stripe-starter",

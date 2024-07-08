@@ -1,5 +1,5 @@
-import { Metadata } from "next"
-import Link from "next/link"
+import { Metadata } from "next";
+import Link from "next/link";
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -12,7 +12,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 export const metadata: Metadata = {
   title: "Login",
   description: "Login to your account",
-}
+};
 
 // toast.success("Please use Google sign in");
 
@@ -33,7 +33,7 @@ export default function LoginPage() {
         href="/"
         className={cn(
           buttonVariants({ variant: "outline", size: "sm" }),
-          "absolute left-4 top-4 md:left-8 md:top-8"
+          "absolute left-4 top-4 md:left-8 md:top-8",
         )}
       >
         <>
@@ -64,5 +64,5 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }
